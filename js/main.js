@@ -42,13 +42,19 @@ buttonOut.addEventListener('click', () => {
 logInForm.addEventListener('submit', (event) => {
     event.preventDefault()
 
-    const user = {
-        login: inputLogin.value,
-        password: inputPassword.value
-    } 
-
-    localStorage.setItem('user', JSON.stringify(user))
-    login(user);
+    if (inputLogin.value == '') {
+        alert ('Введите логин');
+    } else if (inputPassword.value == '') {
+        alert ('Введите пароль');
+    } else {
+        const user = {
+            login: inputLogin.value,
+            password: inputPassword.value
+        } 
+    
+        localStorage.setItem('user', JSON.stringify(user))
+        login(user);
+    }
 })
 
 if (localStorage.getItem('user')) {
